@@ -436,7 +436,9 @@ export default {
       this.currentPage = page + 1
       queryUser(this.queryForm, page)
         .then((res) => {
-          this.list = res.data.content
+          this.list = res.data.content.map((item) => {
+            item['visible'] = false
+          })
           this.total = res.data.total
           // console.log(this.list);
         })
