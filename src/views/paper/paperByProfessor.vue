@@ -463,7 +463,7 @@ export default {
         this.$emit('modifyProfessor', item)
       } else {
         this.$message({
-          message: `只有论文作者（且论文状态处于“审稿中”）才可以操作${item.result}`,
+          message: `只有论文作者（且论文状态处于“审稿中”）才可以操作`,
           type: 'warning'
         })
       }

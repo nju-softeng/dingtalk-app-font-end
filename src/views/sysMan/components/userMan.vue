@@ -154,7 +154,7 @@
               title="停用后用户将移除绩效列表"
               width="195"
               style="font-size:13px"
-              trigger="manual"
+              trigger="hover"
             >
               <div style="text-align: right; margin: 0">
                 <el-button
