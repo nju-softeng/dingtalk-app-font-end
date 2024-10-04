@@ -468,6 +468,17 @@ export const asyncRoutes = [
           // roles: ["admin", "auditor"],
           permission: permissionEnum.EDIT_ANY_USER_INFO
         }
+      },
+      {
+        path: 'acManage',
+        name: 'acManage',
+        component: () => import('@/views/sysMan/components/acManage.vue'),
+        meta: {
+          title: 'ac管理',
+          icon: 'el-icon-edit',
+          // roles: ["admin", "auditor"],
+          permission: permissionEnum.EDIT_ANY_USER_INFO
+        }
       }
     ]
   }

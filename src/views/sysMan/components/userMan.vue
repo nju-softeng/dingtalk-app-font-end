@@ -83,19 +83,19 @@
       >
         <el-table-column label="学号" align="center">
           <template slot-scope="{ row }">
-            <span v-if="row.stuNum === undefined">未设置</span>
-            <span>{{ row.stuNum }}</span>
+            <span v-if="row?.stuNum === undefined">未设置</span>
+            <span>{{ row?.stuNum }}</span>
           </template>
         </el-table-column>
         <el-table-column label="姓名" align="center">
           <template slot-scope="{ row }">
-            <span>{{ row.name }}</span>
+            <span>{{ row?.name }}</span>
           </template>
         </el-table-column>
         <el-table-column align="center" label="职位">
           <template slot-scope="{ row }">
-            {{ row.position }}
-            <span v-if="row.position === undefined">未设置</span>
+            {{ row?.position }}
+            <span v-if="row?.position === undefined">未设置</span>
           </template>
         </el-table-column>
         <el-table-column
@@ -106,9 +106,9 @@
         >
           <template slot-scope="{ row }">
             <div style="overflow: auto; height: 30px;">
-              <template v-if="row.permissionList.length !== 0">
+              <template v-if="row?.permissionList.length !== 0">
                 <el-tag
-                  v-for="permission in row.permissionList"
+                  v-for="permission in row?.permissionList"
                   :key="permission.id"
                   effect="plain"
                 >{{ permission.name }}</el-tag>
@@ -127,9 +127,9 @@
         >
           <template slot-scope="{ row }">
             <div style="overflow: auto; height: 30px;">
-              <template v-if="row.teamList.length !== 0">
+              <template v-if="row?.teamList.length !== 0">
                 <el-tag
-                  v-for="team in row.teamList"
+                  v-for="team in row?.teamList"
                   :key="team.id"
                   effect="plain"
                 >{{ team.name }}</el-tag>
@@ -285,14 +285,14 @@
       <el-table :data="disablelist" height="600px">
         <el-table-column label="学号">
           <template slot-scope="{ row }">
-            <span v-if="row.stuNum === undefined">未设置</span>
-            <span>{{ row.stuNum }}</span>
+            <span v-if="row?.stuNum === undefined">未设置</span>
+            <span>{{ row?.stuNum }}</span>
           </template>
         </el-table-column>
         <el-table-column property="name" label="姓名" />
         <el-table-column prop="role" label="权限">
           <template slot-scope="{ row }">
-            <el-tag v-if="row.authority === 0" type="info">普通用户</el-tag>
+            <el-tag v-if="row?.authority === 0" type="info">普通用户</el-tag>
             <el-tag v-else type="success">评审人</el-tag>
           </template>
         </el-table-column>
@@ -413,7 +413,7 @@ export default {
 
     // 分页获取数据
     handleCurrentChange(val) {
-      if (val == this.currentPage) return
+      if (val === this.currentPage) return
       this.fetchUserList(val - 1)
       // console.log("handleCurrentChange");
     },
@@ -430,17 +430,15 @@ export default {
       // console.log("handleNext");
     },
     fetchUserList(page) {
-      // if (page === undefined) {
-      //   page = 0;
-      // }
       this.currentPage = page + 1
       queryUser(this.queryForm, page)
         .then((res) => {
           this.list = res.data.content.map((item) => {
             item['visible'] = false
+            return item
           })
           this.total = res.data.total
-          // console.log(this.list);
+          console.log(this.list, res.data.content)
         })
         .finally(() => {
           this.loading = false

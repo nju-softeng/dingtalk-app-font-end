@@ -8,7 +8,8 @@ const api = {
   getUserProperties: (uid) => `/user/${uid}/propertyList`,
   addProperties: (uid) => `/user/${uid}/property`,
   deleteProperties: () => `/property`,
-  updateProperties: () => `/property/update`
+  updateProperties: () => `/property/update`,
+  userlist: () => `/userlist`
 }
 
 // 测试用户登陆
@@ -172,5 +173,13 @@ export function downloadContract(data) {
     responseType: 'blob',
     method: 'get',
     data
+  })
+}
+
+// 查询所有可用用户
+export function getUserList() {
+  return axios({
+    url: api.userlist(),
+    method: 'get'
   })
 }

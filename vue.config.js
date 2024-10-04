@@ -38,7 +38,8 @@ module.exports = {
     proxy: {
       '/api': {
         target: 'http://localhost:8080/',
-        // target: "https://c2e8-2001-da8-1007-4001-00-53ae.ngrok-free.app",
+        // todo 如下是测试的后端
+        // target: 'http://47.122.10.124:9004',
         changeOrigin: true
       }
     }
