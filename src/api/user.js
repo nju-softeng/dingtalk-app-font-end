@@ -1,20 +1,22 @@
 import axios from '@/utils/request'
 
 const api = {
-  getUserPrizes: uid => `/users/${uid}/prizes`,
-  addPrize: uid => `/users/${uid}/prizes`,
+  getUserPrizes: (uid) => `/users/${uid}/prizes`,
+  addPrize: (uid) => `/users/${uid}/prizes`,
   deletePrize: (uid, prizeId) => `/users/${uid}/prizes/${prizeId}`,
   updatePrize: (uid, prizeId) => `/users/${uid}/prizes/${prizeId}`,
-  getUserProperties: uid => `/user/${uid}/propertyList`,
-  addProperties: uid => `/user/${uid}/property`,
+  getUserProperties: (uid) => `/user/${uid}/propertyList`,
+  addProperties: (uid) => `/user/${uid}/property`,
   deleteProperties: () => `/property`,
-  updateProperties: () => `/property/update`
+  updateProperties: () => `/property/update`,
+  userlist: () => `/userlist`
 }
 
 // 测试用户登陆
 export function test_login(uid) {
   return axios({
-    url: '/login_test/' + uid,
+    url: '/v2/login_test/' + uid,
+    // url: '/login_test/' + uid,
     method: 'get'
   })
 }
@@ -22,7 +24,7 @@ export function test_login(uid) {
 // 用户登录
 export function login(data) {
   return axios({
-    url: '/login',
+    url: '/v2/login',
     method: 'post',
     data
   })
@@ -171,5 +173,13 @@ export function downloadContract(data) {
     responseType: 'blob',
     method: 'get',
     data
+  })
+}
+
+// 查询所有可用用户
+export function getUserList() {
+  return axios({
+    url: api.userlist(),
+    method: 'get'
   })
 }

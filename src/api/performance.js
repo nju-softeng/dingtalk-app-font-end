@@ -49,3 +49,12 @@ export function updateTopup(data) {
     data
   })
 }
+
+// 增加一条ac记录
+export function addAcRecord(data) {
+  return axios({
+    url: '/performance',
+    method: 'post',
+    data
+  })
+}

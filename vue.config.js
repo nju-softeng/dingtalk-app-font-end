@@ -38,6 +38,8 @@ module.exports = {
     proxy: {
       '/api': {
         target: 'http://localhost:8080/',
+        // todo 如下是测试的后端
+        // target: 'http://47.122.10.124:9004',
         changeOrigin: true
       }
     }
@@ -69,7 +71,7 @@ module.exports = {
       .rule('vue')
       .use('vue-loader')
       .loader('vue-loader')
-      .tap(options => {
+      .tap((options) => {
         options.compilerOptions.preserveWhitespace = true
         return options
       })
@@ -77,11 +79,11 @@ module.exports = {
 
     config
       // https://webpack.js.org/configuration/devtool/#development
-      .when(process.env.NODE_ENV === 'development', config =>
+      .when(process.env.NODE_ENV === 'development', (config) =>
         config.devtool('cheap-source-map')
       )
 
-    config.when(process.env.NODE_ENV !== 'development', config => {
+    config.when(process.env.NODE_ENV !== 'development', (config) => {
       config
         .plugin('ScriptExtHtmlWebpackPlugin')
         .after('html')

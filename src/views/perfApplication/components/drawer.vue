@@ -94,6 +94,7 @@
           </div>
           <el-button
             style="border-style:dashed; width:298px; "
+            disabled
             @click="addAcItem"
           ><i class="el-icon-plus" /> 添加AC申请
           </el-button>
