@@ -472,10 +472,7 @@ export default {
               this.resultDialog = false
               this.fetchPaper(this.currentPage)
               this.$notify({
-                title: '更新成功',
-                message:
-                  '投票结果  : ' +
-                  (this.resultForm.result ? 'ACCEPT' : 'REJECT'),
+                title: '结果更新成功',
                 type: 'success'
               })
               this.resultForm = {
